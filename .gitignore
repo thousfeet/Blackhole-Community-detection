@@ -1,0 +1,9 @@
+Debug/
+Release/
+x64/
+.vs/
+*.log
+*.top5000.cmty.txt
+*.ungraph.txt
+*.nodeCIDs.txt
+!football.ungraph.txt
