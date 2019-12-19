@@ -5,29 +5,29 @@
 #include <unordered_map>
 #include <vector>
 
-typedef unsigned int Node;
+
 /********************************************
-����˵��
+类型说明
 
-Node - int: �ڵ�ID
-NodeSet - unordered_set: Node����
+Node - unsigned int: 节点ID
+NodeSet - unordered_set: Node集合
 
-Edge - long long: ��Ȩ
-EdgeSet - unordered_set: Edge����
+Edge - long long: 边权
+EdgeSet - unordered_set: Edge集合
 
-CID - int: Cluster��ID
-Cluster - vector: Cluster��ID����
-ClusterSet - vector: Cluster���ϣ�
+CID - int: Cluster的ID
+Cluster - vector: Cluster的ID集合
+ClusterSet - vector: Cluster集合？
 
-Pos - vector: {<double>} �ڵ��ڿռ��е�λ��
-NodePos - pair: <�ڵ㣬Pos>
-NodePosSet - vector: NodePos����
+Pos - vector: {<double>} 节点在空间中的位置
+NodePos - pair: <节点，Pos>
+NodePosSet - vector: NodePos集合
 
-NodeCID - pair: <�ڵ�, ������Cluster>
-NodeCIDSet - vector: NodeCID����
+NodeCID - pair: <节点, 所属的Cluster>
+NodeCIDSet - vector: NodeCID集合
 ***********************************************/
 
-
+typedef unsigned int Node;
 typedef std::unordered_set<Node> NodeSet;
 
 typedef unsigned long long Edge;
