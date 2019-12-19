@@ -24,13 +24,16 @@
     <ClCompile Include="DBScan.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Octree.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="BlackHole.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="OctTree.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="type.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -44,13 +47,13 @@
     <ClInclude Include="DBScan.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Octree.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="BlackHole.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="type.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="OctTree.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

@@ -156,14 +156,15 @@
     <ClCompile Include="DataUtils.cpp" />
     <ClCompile Include="DBScan.cpp" />
     <ClCompile Include="GraphDrawing.cpp" />
-    <ClCompile Include="Octree.cpp" />
+    <ClCompile Include="OctTree.cpp" />
+    <ClCompile Include="type.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BlackHole.h" />
     <ClInclude Include="DataUtils.h" />
     <ClInclude Include="DBScan.h" />
     <ClInclude Include="GraphDrawing.h" />
-    <ClInclude Include="Octree.h" />
+    <ClInclude Include="OctTree.h" />
     <ClInclude Include="type.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

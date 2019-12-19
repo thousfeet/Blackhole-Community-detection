@@ -6,4 +6,6 @@ x64/
 *.top5000.cmty.txt
 *.ungraph.txt
 *.nodeCIDs.txt
+*.nodePoses.txt
 !football.ungraph.txt
+test/

@@ -1,15 +1,14 @@
 #include <iostream>
 #include <fstream>
 #include <ctime>
+#include <algorithm>
 #include "DataUtils.h"
 
 using namespace std;
 
-string DataUtils::getDataRoot(const string & exePath)
+string DataUtils::getDataRoot(const string& exePath)
 {
-	cout << "===================================" << endl;
-	cout << "\"getDataRoot\" a developing function!" << endl;
-	cout << "===================================" << endl;
+	cout << "WARNING: \"getDataRoot\" is a now debugging function!" << endl;
 	return exePath.substr(0, exePath.find("BlackHoleCD")) + "Datasets\\";
 }
 
@@ -47,6 +46,29 @@ void DataUtils::readNetwork(const string& dataRoot, const string& dataset, NodeS
 	cout << "[readNetwork] [" + dataset + "] [" << double(end - start) / CLOCKS_PER_SEC << "s] " << nodes.size() << " nodes, " << edges.size() << " edges" << endl;
 }
 
+void DataUtils::writeNodePoses(const std::string& dataRoot, const std::string& dataset, NodePosSet& nodePoses)
+{
+	clock_t start = clock();
+	string filename = dataRoot + dataset + ".nodePoses.txt";
+	ofstream fout(filename);
+	if (!fout.is_open()) {
+		cout << "ERROR: Unable to write \"" + filename + "\"!" << endl;
+		return;
+	}
+	vector<pair<Node, Pos>> nps(nodePoses.begin(), nodePoses.end());
+	sort(nps.begin(), nps.end(), [](const pair<Node, Pos>& a, const pair<Node, Pos>& b) { return a.first < b.first; });
+	for (auto& np : nps) {
+		fout << np.first;
+		int dim = np.second.getDim();
+		for (int i = 0; i < dim; ++i)
+			fout << '\t' << np.second[i];
+		fout << endl;
+	}
+	fout.close();
+	clock_t end = clock();
+	cout << "[writeNodeCIDs] [" << dataset << "] [" << double(end - start) / CLOCKS_PER_SEC << "s] " << nodePoses.size() << " nodePoses" << endl;
+}
+
 void DataUtils::writeNodeCIDs(const std::string& dataRoot, const std::string& dataset, const NodeCIDSet& nodeCIDs)
 {
 	clock_t start = clock();
@@ -60,5 +82,5 @@ void DataUtils::writeNodeCIDs(const std::string& dataRoot, const std::string& da
 		fout << nodeCID.first << '\t' << nodeCID.second << endl;
 	fout.close();
 	clock_t end = clock();
-	cout << "[writeNodeCIDs] [" + dataset + "] [" << double(end - start) / CLOCKS_PER_SEC << "s] " << nodeCIDs.size() << " nodeCIDs" << endl;
+	cout << "[writeNodeCIDs] [" << dataset << "] [" << double(end - start) / CLOCKS_PER_SEC << "s] " << nodeCIDs.size() << " nodeCIDs" << endl;
 }
