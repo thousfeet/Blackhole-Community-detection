@@ -30,6 +30,12 @@
     <ClCompile Include="BlackHole.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="test.cpp">
+      <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="test1.py">
+      <Filter>头文件</Filter>
+    </ClCompile>
     <ClCompile Include="OctTree.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -56,5 +62,10 @@
     <ClInclude Include="OctTree.h">
       <Filter>头文件</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="test2.py">
+      <Filter>头文件</Filter>
+    </None>
   </ItemGroup>
 </Project>

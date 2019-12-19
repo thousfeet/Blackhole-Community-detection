@@ -5,6 +5,13 @@
 class DBScan
 {
 public:
-	static void exec(const NodeSet& nodes, const EdgeSet& edges, NodePosSet& nodePoses, const int dim, NodeCIDSet& nodeCIDs);
+	/*
+	dbscan����˵��
+
+	���ã�DBScan����
+	���룺nodePoses��vector<pair<�ڵ㣬Pos>>�� 
+	�����nodeCIDs��vector<pair<�ڵ�, ������Cluster>>
+	*/
+	static NodeCIDSet dbscan(const NodePosSet& nodePoses, const float eps, const int minPts);
 };
 

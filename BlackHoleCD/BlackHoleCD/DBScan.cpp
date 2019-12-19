@@ -1,11 +1,11 @@
 #include "DBScan.h"
+
+NodeCIDSet DBScan::dbscan(const NodePosSet& nodePoses, const float eps, const int minPts)
+{
+
+    return NodeCIDSet();
+}
 #include <iostream>
 
-using namespace std;
-
-
-void DBScan::exec(const NodeSet& nodes, const EdgeSet& edges, NodePosSet& nodePoses, const int dim, NodeCIDSet& nodeCIDs)
-{
 	// Just Place here, you can delete it;
 	DataUtils::writeNodePoses(".\\", "test", nodePoses);
-}

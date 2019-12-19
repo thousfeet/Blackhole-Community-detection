@@ -156,8 +156,9 @@
     <ClCompile Include="DataUtils.cpp" />
     <ClCompile Include="DBScan.cpp" />
     <ClCompile Include="GraphDrawing.cpp" />
-    <ClCompile Include="OctTree.cpp" />
-    <ClCompile Include="type.cpp" />
+    <ClCompile Include="Octree.cpp" />
+    <ClCompile Include="test.cpp" />
+    <ClCompile Include="test1.py" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BlackHole.h" />
@@ -166,6 +167,9 @@
     <ClInclude Include="GraphDrawing.h" />
     <ClInclude Include="OctTree.h" />
     <ClInclude Include="type.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="test2.py" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

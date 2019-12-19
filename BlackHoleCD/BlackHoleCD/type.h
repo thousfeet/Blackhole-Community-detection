@@ -6,6 +6,28 @@
 #include <vector>
 
 typedef unsigned int Node;
+/********************************************
+����˵��
+
+Node - int: �ڵ�ID
+NodeSet - unordered_set: Node����
+
+Edge - long long: ��Ȩ
+EdgeSet - unordered_set: Edge����
+
+CID - int: Cluster��ID
+Cluster - vector: Cluster��ID����
+ClusterSet - vector: Cluster���ϣ�
+
+Pos - vector: {<double>} �ڵ��ڿռ��е�λ��
+NodePos - pair: <�ڵ㣬Pos>
+NodePosSet - vector: NodePos����
+
+NodeCID - pair: <�ڵ�, ������Cluster>
+NodeCIDSet - vector: NodeCID����
+***********************************************/
+
+
 typedef std::unordered_set<Node> NodeSet;
 
 typedef unsigned long long Edge;
