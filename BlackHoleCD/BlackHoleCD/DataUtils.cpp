@@ -44,7 +44,7 @@ void DataUtils::readNetwork(const string& dataRoot, const string& dataset, Netwo
 	cout << "[readNetwork] [" + dataset + "] [" << double(end - start) / CLOCKS_PER_SEC << "s] " << network.getNodeNum() << " nodes, " << network.getEdgeNum() << " edges" << endl;
 }
 
-void DataUtils::writeNodePoses(const std::string& dataRoot, const std::string& dataset, NodePosSet& nodePoses)
+void DataUtils::writeNodePoses(const std::string& dataRoot, const std::string& dataset, const NodePosSet& nodePoses)
 {
 	clock_t start = clock();
 	string filename = dataRoot + dataset + ".nodePoses.txt";
@@ -76,8 +76,10 @@ void DataUtils::writeNodeCIDs(const std::string& dataRoot, const std::string& da
 		cout << "ERROR: Unable to write \"" + filename + "\"!" << endl;
 		return;
 	}
-	for (const NodeCID& nodeCID : nodeCIDs)
-		fout << nodeCID.first << '\t' << nodeCID.second << endl;
+	for (const NodeCID& nodeCIDMap : nodeCIDs) {
+		for (const auto& nodeCID : nodeCIDMap)
+			fout << nodeCID.first << '\t' << nodeCID.second << endl;
+	}
 	fout.close();
 	clock_t end = clock();
 	cout << "[writeNodeCIDs] [" << dataset << "] [" << double(end - start) / CLOCKS_PER_SEC << "s] " << nodeCIDs.size() << " nodeCIDs" << endl;

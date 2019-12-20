@@ -81,6 +81,15 @@ double Pos::length() const
 	return sqrt(r);
 }
 
+double Pos::eucDis() const
+{
+	double euc = 0;
+	for (int i = 0; i < dim; i++) {
+		euc += pos[i] * pos[i];
+	}
+	return euc;
+}
+
 int Pos::getDim() const
 {
 	return dim;

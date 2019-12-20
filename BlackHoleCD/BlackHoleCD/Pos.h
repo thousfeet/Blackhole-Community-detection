@@ -24,6 +24,7 @@ public:
 public:
 	void setZero();
 	double length() const;
+	double eucDis() const;
 	int getDim() const;
 
 private:
