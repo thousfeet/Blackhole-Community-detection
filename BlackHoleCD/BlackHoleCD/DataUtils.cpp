@@ -12,7 +12,7 @@ string DataUtils::getDataRoot(const string& exePath)
 	return exePath.substr(0, exePath.find("BlackHoleCD")) + "Datasets\\";
 }
 
-void DataUtils::readNetwork(const string& dataRoot, const string& dataset, Network& network)
+string DataUtils::readNetwork(const string& dataRoot, const string& dataset, Network& network)
 {
 	clock_t start = clock();
 	network.clear();
@@ -20,7 +20,7 @@ void DataUtils::readNetwork(const string& dataRoot, const string& dataset, Netwo
 	ifstream fin(filename);
 	if (!fin.is_open()) {
 		cout << "ERROR: Unable to read \"" + filename + "\"!" << endl;
-		return;
+		return "";
 	}
 	while (fin) {
 		string line;
@@ -32,7 +32,7 @@ void DataUtils::readNetwork(const string& dataRoot, const string& dataset, Netwo
 			p = (int)line.find(' ');
 		if (p == -1) {
 			cout << "ERROR: Read \"" + filename + "\" failed. Error format!" << endl;
-			return;
+			return "";
 		}
 		Node v1 = stoi(line.substr(0, p));
 		Node v2 = stoi(line.substr(p + 1));
@@ -42,16 +42,17 @@ void DataUtils::readNetwork(const string& dataRoot, const string& dataset, Netwo
 	fin.close();
 	clock_t end = clock();
 	cout << "[readNetwork] [" + dataset + "] [" << double(end - start) / CLOCKS_PER_SEC << "s] " << network.getNodeNum() << " nodes, " << network.getEdgeNum() << " edges" << endl;
+	return filename;
 }
 
-void DataUtils::writeNodePoses(const std::string& dataRoot, const std::string& dataset, const NodePosSet& nodePoses)
+string DataUtils::writeNodePoses(const std::string& dataRoot, const std::string& dataset, const NodePosSet& nodePoses)
 {
 	clock_t start = clock();
 	string filename = dataRoot + dataset + ".nodePoses.txt";
 	ofstream fout(filename);
 	if (!fout.is_open()) {
 		cout << "ERROR: Unable to write \"" + filename + "\"!" << endl;
-		return;
+		return "";
 	}
 	vector<pair<Node, Pos>> nps(nodePoses.begin(), nodePoses.end());
 	sort(nps.begin(), nps.end(), [](const pair<Node, Pos>& a, const pair<Node, Pos>& b) { return a.first < b.first; });
@@ -65,22 +66,29 @@ void DataUtils::writeNodePoses(const std::string& dataRoot, const std::string& d
 	fout.close();
 	clock_t end = clock();
 	cout << "[writeNodeCIDs] [" << dataset << "] [" << double(end - start) / CLOCKS_PER_SEC << "s] " << nodePoses.size() << " nodePoses" << endl;
+	return filename;
 }
 
-void DataUtils::writeNodeCIDs(const std::string& dataRoot, const std::string& dataset, const NodeCIDSet& nodeCIDs)
+string DataUtils::writeNodeCIDs(const std::string& dataRoot, const std::string& dataset, const NodeCID& nodeCID)
 {
 	clock_t start = clock();
 	string filename = dataRoot + dataset + ".nodeCIDs.txt";
 	ofstream fout(filename);
 	if (!fout.is_open()) {
 		cout << "ERROR: Unable to write \"" + filename + "\"!" << endl;
-		return;
+		return "";
 	}
-	for (const NodeCID& nodeCIDMap : nodeCIDs) {
-		for (const auto& nodeCID : nodeCIDMap)
-			fout << nodeCID.first << '\t' << nodeCID.second << endl;
+	for (const auto ni : nodeCID) {
+			fout << ni.first << '\t' << ni.second << endl;
 	}
 	fout.close();
 	clock_t end = clock();
-	cout << "[writeNodeCIDs] [" << dataset << "] [" << double(end - start) / CLOCKS_PER_SEC << "s] " << nodeCIDs.size() << " nodeCIDs" << endl;
+	cout << "[writeNodeCIDs] [" << dataset << "] [" << double(end - start) / CLOCKS_PER_SEC << "s] " << nodeCID.size() << " nodeCIDs" << endl;
+	return filename;
+}
+
+void DataUtils::draw(const std::string& dataRoot, const string& dataset, const string& dataFilename, const string& clusterFilename, NodePosSet& nodePoses)
+{
+	string filename = DataUtils::writeNodePoses(dataRoot, dataset, nodePoses);
+	system(("python draw.py " + dataFilename + " " + filename + " " + clusterFilename).c_str());
 }

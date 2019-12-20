@@ -14,10 +14,12 @@ int main(int argc, char* argv[])
 	const int dim = 2;
 	for (const string& dataset : datasets) {
 		Network network;
-		DataUtils::readNetwork(dataRoot, dataset, network);
-		NodeCIDSet nodeCIDs;
-		BlackHole::exec(network, dim, nodeCIDs);
-		DataUtils::writeNodeCIDs(dataRoot, dataset, nodeCIDs);
+		string dataFilename = DataUtils::readNetwork(dataRoot, dataset, network);
+		NodePosSet nodePoses;
+		NodeCID nodeCID;
+		BlackHole::exec(network, dim, nodePoses, nodeCID);
+		string clusterFilename = DataUtils::writeNodeCIDs(dataRoot, dataset, nodeCID);
+		DataUtils::draw(dataRoot, dataset, dataFilename, clusterFilename, nodePoses);
 	}
 	return 0;
 }

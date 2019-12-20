@@ -25,13 +25,11 @@ NodeNearPoints - unordered_map: <Node, NodeSet>
 ***********************************************/
 
 
-typedef unsigned int CID;
+typedef int CID;
 typedef std::unordered_map<CID, NodeSet> ClusterSet;
 
 typedef std::unordered_map<Node, Pos> NodePosSet;
 typedef std::unordered_map<Node, CID> NodeCID;
-typedef std::vector<NodeCID> NodeCIDSet;
-
 
 typedef std::unordered_map<Node, Pos> NodePosSet;
 typedef std::unordered_map<Node, NodeSet> NodeNearPoints;

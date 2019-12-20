@@ -6,11 +6,8 @@
 class DBScan
 {
 public:
-	DBScan(NodePosSet& nodePoses, int nodeNum, float eps, int minPts);
+	DBScan(NodePosSet& nodePoses, int nodeNum, double eps, int minPts, NodeCID& nodeCID);
 	void dbscan();
-
-public:
-	static void exec(NodePosSet& nodePoses, const int dim, NodeCIDSet& nodeCIDs);
 
 private:
 	void init();
@@ -18,11 +15,11 @@ private:
 	bool isCoreObject(int idx);
 	void dfs(int now, int c);
 	int nodeNum;
-	float eps;
+	double eps;
 	int minPts;
 
 	const NodePosSet& nodePoses;
-	NodeCID nodeCID;
+	NodeCID& nodeCID;
 	NodeNearPoints nodeNearPoints;
 
 	CID clusterIdx;

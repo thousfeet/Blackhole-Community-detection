@@ -5,15 +5,31 @@ using namespace std;
 
 #define NOT_CLASSIFIED -1
 #define NOISE -2
+#define max(a, b) (a < b ? b : a)
+#define min(a, b) (a < b ? a : b)
 
 
-DBScan::DBScan(NodePosSet& nodePoses, int nodeNum, float eps, int minPts)
-	: nodePoses(nodePoses)
+DBScan::DBScan(NodePosSet& nodePoses, int nodeNum, double eps, int minPts, NodeCID& nodeCID)
+	: nodePoses(nodePoses), nodeCID(nodeCID)
 {
+	this->nodeCID.clear();
 	this->eps = eps;
 	this->minPts = minPts;
 	this->nodeNum = nodeNum;
 	this->clusterIdx = -1;
+
+	auto& p = nodePoses.begin()->second;
+	Pos maxPos(p), minPos(p);
+	int dim = p.getDim();
+	for (auto& t : nodePoses) {
+		for (int i = 0; i < dim; ++i) {
+			maxPos[i] = max(maxPos[i], t.second[i]);
+			minPos[i] = min(maxPos[i], t.second[i]);
+		}
+	}
+	for (int i = 0; i < dim; ++i)
+		this->eps *= maxPos[i] - minPos[i];
+	cout << "eps = " << this->eps << endl;
 }
 
 void DBScan::dbscan()
@@ -60,6 +76,7 @@ void DBScan::checkNearPoints()
 		for (auto& node2 : nodePoses) {
 			auto j = node2.first; //node ID
 			if (i == j) continue;
+			// cout << (node1.second - node2.second).eucDis() << endl;
 			if ((node1.second - node2.second).eucDis() <= eps) {
 				nodeNearPoints[i].insert(j);
 			}
@@ -84,11 +101,3 @@ void DBScan::dfs(int now, int c)
 
 }
 
-void DBScan::exec(NodePosSet& nodePoses, const int dim, NodeCIDSet& nodeCIDs)
-{
-	// Just Place here, you can delete it;
-	DataUtils::writeNodePoses(".\\", "test", nodePoses);
-	string filename = "test.nodePoses.txt";
-	string dataname = "..\\..\\Datasets\\Football\\football.ungraph.txt";
-	system(("python draw.py " + dataname + " " + filename).c_str());
-}
