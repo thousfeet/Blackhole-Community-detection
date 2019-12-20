@@ -16,15 +16,13 @@ Edge - long long: 边权
 EdgeSet - unordered_set: Edge集合
 
 CID - int: Cluster的ID
-Cluster - vector: Cluster的ID集合
-ClusterSet - vector: Cluster集合？
+ClusterSet - unordered_map: <CID, NodeSet>
 
 Pos - vector: {<double>} 节点在空间中的位置
-NodePos - pair: <节点，Pos>
-NodePosSet - vector: NodePos集合
+NodePosSet - unordered_map: <Node, Pos>
 
-NodeCID - pair: <节点, 所属的Cluster>
-NodeCIDSet - vector: NodeCID集合
+NodeCID - unordered_map: <Node, CID> 节点所属的cluster
+NodeNearPoints - unordered_map: <Node, NodeSet>
 ***********************************************/
 
 typedef unsigned int Node;
@@ -34,8 +32,7 @@ typedef unsigned long long Edge;
 typedef std::unordered_set<Edge> EdgeSet;
 
 typedef unsigned int CID;
-typedef std::vector<CID> Cluster;
-typedef std::vector<Cluster> ClusterSet;
+typedef std::unordered_map<CID, NodeSet> ClusterSet;
 
 class Pos {
 public:
@@ -60,6 +57,13 @@ public:
 	void setZero();
 	double length() const;
 	int getDim() const;
+	double eucDis() {
+		double euc = 0;
+		for (int i = 0; i < dim; i++) {
+			euc += pos[i] * pos[i];
+		}
+		return euc;
+	}
 
 private:
 	int dim;
@@ -67,6 +71,5 @@ private:
 };
 
 typedef std::unordered_map<Node, Pos> NodePosSet;
-
-typedef std::pair<Node, CID> NodeCID;
-typedef std::vector<NodeCID> NodeCIDSet;
+typedef std::unordered_map<Node, NodeSet> NodeNearPoints;
+typedef std::unordered_map<Node, CID> NodeCID;

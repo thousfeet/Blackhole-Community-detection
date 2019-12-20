@@ -1,17 +1,29 @@
 #pragma once
 
 #include "GraphDrawing.h"
+#include <iostream>
 
 class DBScan
 {
 public:
-	/*
-	dbscan函数说明
 
-	作用：DBScan聚类
-	输入：nodePoses：vector<pair<节点，Pos>>， 
-	输出：nodeCIDs：vector<pair<节点, 所属的Cluster>>
-	*/
-	static NodeCIDSet dbscan(NodePosSet& nodePoses, const float eps, const int minPts);
+	DBScan(NodePosSet& nodePoses, int nodeNum, float eps, int minPts);
+	void dbscan();
+
+private:
+	void init();
+	void checkNearPoints();
+	bool isCoreObject(int idx);
+	void dfs(int now, int c);
+	int nodeNum;
+	float eps;
+	int minPts;
+
+	NodePosSet nodePoses;
+	NodeCID nodeCID;
+	NodeNearPoints nodeNearPoints;
+
+	CID clusterIdx;
+	ClusterSet clusterSet;
 };
 

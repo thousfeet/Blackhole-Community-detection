@@ -24,6 +24,9 @@
     <ClCompile Include="DBScan.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Octree.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -31,15 +34,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="test.cpp">
-      <Filter>头文件</Filter>
-    </ClCompile>
-    <ClCompile Include="test1.py">
-      <Filter>头文件</Filter>
-    </ClCompile>
-    <ClCompile Include="OctTree.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="type.cpp">
+    <ClCompile Include="test1.py">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -53,19 +50,19 @@
     <ClInclude Include="DBScan.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Octree.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
     <ClInclude Include="BlackHole.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="type.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="OctTree.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="test2.py">
-      <Filter>头文件</Filter>
+      <Filter>源文件</Filter>
     </None>
   </ItemGroup>
 </Project>
