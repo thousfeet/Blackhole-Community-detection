@@ -5,6 +5,6 @@
 class DBScan
 {
 public:
-	static void exec(const NodeSet& nodes, const EdgeSet& edges, NodePosSet& nodePoses, const int dim, NodeCIDSet& nodeCIDs);
+	static void exec(NodePosSet& nodePoses, const int dim, NodeCIDSet& nodeCIDs);
 };
 

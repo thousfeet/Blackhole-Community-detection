@@ -13,11 +13,10 @@ int main(int argc, char* argv[])
 	const vector<string> datasets = { "Football\\football" };
 	const int dim = 2;
 	for (const string& dataset : datasets) {
-		NodeSet nodes;
-		EdgeSet edges;
-		DataUtils::readNetwork(dataRoot, dataset, nodes, edges);
+		Network network;
+		DataUtils::readNetwork(dataRoot, dataset, network);
 		NodeCIDSet nodeCIDs;
-		BlackHole::exec(nodes, edges, dim, nodeCIDs);
+		BlackHole::exec(network, dim, nodeCIDs);
 		DataUtils::writeNodeCIDs(dataRoot, dataset, nodeCIDs);
 	}
 	return 0;

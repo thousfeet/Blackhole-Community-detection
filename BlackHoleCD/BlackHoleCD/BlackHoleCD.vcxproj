@@ -156,15 +156,18 @@
     <ClCompile Include="DataUtils.cpp" />
     <ClCompile Include="DBScan.cpp" />
     <ClCompile Include="GraphDrawing.cpp" />
+    <ClCompile Include="Network.cpp" />
     <ClCompile Include="OctTree.cpp" />
-    <ClCompile Include="type.cpp" />
+    <ClCompile Include="Pos.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BlackHole.h" />
     <ClInclude Include="DataUtils.h" />
     <ClInclude Include="DBScan.h" />
     <ClInclude Include="GraphDrawing.h" />
+    <ClInclude Include="Network.h" />
     <ClInclude Include="OctTree.h" />
+    <ClInclude Include="Pos.h" />
     <ClInclude Include="type.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

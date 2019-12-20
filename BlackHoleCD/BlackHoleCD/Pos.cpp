@@ -1,4 +1,4 @@
-#include "type.h"
+#include "Pos.h"
 #include <iostream>
 
 using namespace std;

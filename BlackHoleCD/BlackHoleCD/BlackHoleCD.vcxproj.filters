@@ -33,7 +33,10 @@
     <ClCompile Include="OctTree.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="type.cpp">
+    <ClCompile Include="Network.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Pos.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -54,6 +57,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="OctTree.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Network.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Pos.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

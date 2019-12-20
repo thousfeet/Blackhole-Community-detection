@@ -12,11 +12,10 @@ string DataUtils::getDataRoot(const string& exePath)
 	return exePath.substr(0, exePath.find("BlackHoleCD")) + "Datasets\\";
 }
 
-void DataUtils::readNetwork(const string& dataRoot, const string& dataset, NodeSet& nodes, EdgeSet& edges)
+void DataUtils::readNetwork(const string& dataRoot, const string& dataset, Network& network)
 {
 	clock_t start = clock();
-	nodes.clear();
-	edges.clear();
+	network.clear();
 	string filename = dataRoot + dataset + ".ungraph.txt";
 	ifstream fin(filename);
 	if (!fin.is_open()) {
@@ -37,13 +36,12 @@ void DataUtils::readNetwork(const string& dataRoot, const string& dataset, NodeS
 		}
 		Node v1 = stoi(line.substr(0, p));
 		Node v2 = stoi(line.substr(p + 1));
-		nodes.insert(v1);
-		nodes.insert(v2);
-		edges.insert(EDGE(v1, v2));
+		
+		network.insertEdge(v1, v2);
 	}
 	fin.close();
 	clock_t end = clock();
-	cout << "[readNetwork] [" + dataset + "] [" << double(end - start) / CLOCKS_PER_SEC << "s] " << nodes.size() << " nodes, " << edges.size() << " edges" << endl;
+	cout << "[readNetwork] [" + dataset + "] [" << double(end - start) / CLOCKS_PER_SEC << "s] " << network.getNodeNum() << " nodes, " << network.getEdgeNum() << " edges" << endl;
 }
 
 void DataUtils::writeNodePoses(const std::string& dataRoot, const std::string& dataset, NodePosSet& nodePoses)

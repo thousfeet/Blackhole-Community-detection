@@ -6,6 +6,6 @@
 class BlackHole
 {
 public:
-	static void exec(const NodeSet& nodes, const EdgeSet& edges, const int dim, NodeCIDSet& nodeCIDs);
+	static void exec(const Network& network, const int dim, NodeCIDSet& nodeCIDs);
 };
 
