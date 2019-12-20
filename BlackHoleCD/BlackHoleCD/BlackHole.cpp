@@ -9,5 +9,5 @@ void BlackHole::exec(const Network& network, const int dim, NodeCIDSet& nodeCIDs
 	graphDrawing.exec(network, nodePoses);
 	DBScan dbscan(nodePoses, network.getNodeNum(), 0.1, 5);
 	dbscan.dbscan();
-	// DBScan::exec(nodePoses, dim, nodeCIDs);
+	DBScan::exec(nodePoses, dim, nodeCIDs);
 }

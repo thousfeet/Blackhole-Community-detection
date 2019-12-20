@@ -55,12 +55,12 @@ void DBScan::init()
 
 void DBScan::checkNearPoints()
 {
-	for (auto node : nodePoses) {
-		auto i = node.first; //node ID
-		for (auto node : nodePoses) {
-			auto j = node.first; //node ID
+	for (auto& node1 : nodePoses) {
+		auto i = node1.first; //node ID
+		for (auto& node2 : nodePoses) {
+			auto j = node2.first; //node ID
 			if (i == j) continue;
-			if ((nodePoses[i] - nodePoses[j]).eucDis() <= eps) {
+			if ((node1.second - node2.second).eucDis() <= eps) {
 				nodeNearPoints[i].insert(j);
 			}
 		}
