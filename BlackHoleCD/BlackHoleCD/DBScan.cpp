@@ -1,6 +1,6 @@
 #include "DBScan.h"
 #include <string>
-
+#include <stack>
 using namespace std;
 
 #define NOT_CLASSIFIED -1
@@ -52,7 +52,7 @@ void DBScan::dbscan()
 	for (auto node : nodePoses) {
 		auto i = node.first; //node ID
 		if (nodeCID[i] != NOISE) {
-			clusterSet[nodeCID[i]].push_back(i);
+			clusterSet[nodeCID[i]].insert(i);
 		}
 	}
 
@@ -75,7 +75,7 @@ void DBScan::checkNearPoints()
 			auto j = node2.first; //node ID
 			if (i == j) continue;
 			if ((node1.second - node2.second).eucDis() <= eps) {
-				nodeNearPoints[i].push_back(j);
+				nodeNearPoints[i].insert(j);
 			}
 		}
 	}
@@ -88,13 +88,13 @@ bool DBScan::isCoreObject(int idx)
 
 void DBScan::dfs(int now, int c)
 {
-	//if (!isCoreObject(now)) return;
+	nodeCID[now] = c;
+	if (!isCoreObject(now)) return;
 
 	for (auto& next : nodeNearPoints[now]) {
 		if (nodeCID[next] == NOISE) nodeCID[next] = c;
 		if (nodeCID[next] != NOT_CLASSIFIED) continue; 
-		nodeCID[now] = c;
-		if (isCoreObject(now)) dfs(next, c);
+		dfs(next, c);
 	}
 
 }
