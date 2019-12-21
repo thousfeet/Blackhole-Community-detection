@@ -1,5 +1,6 @@
 #pragma once
 #include "DataUtils.h"
+#include "OctTree.h"
 
 
 class GraphDrawing
@@ -14,10 +15,14 @@ private:
 	Pos getRandomPos();
 	void calAttractiveForce(const Pos& u, const Pos& v, const double a, Pos& fa);
 	void calRepulsiveForce(const Pos& u, const Pos& v, const double r, Pos& fr);
+	void calRepulsiveForce(const Pos& u, OctTree* tree, const double r, Pos& fr);
 	double calEnergy(const Network& network, const double a, const double r, NodePosSet & poses);
+	double calEnergy(const Network& network, OctTree* tree, const double a, const double r, NodePosSet & poses);
 	double calEnergy(const Pos& pu, const Pos& pv, const double p);
-	double calAttractiveEnergy(const EdgeSet& edges, const double a, NodePosSet& poses);
-	double calRepulsiveEnergy(const Network& network, const double r, NodePosSet & poses);
+	double calEnergy(const Pos& pu, OctTree* tree, const double p);
+	double calAttractiveEnergy(const EdgeSet& edges, const double a, NodePosSet& nodePoses);
+	double calRepulsiveEnergy(const Network& network, const double r, NodePosSet & nodePoses);
+	double calRepulsiveEnergy(const Network& network, OctTree* tree, const double r, NodePosSet & nodePoses);
 	void updateParam(const int iter);
 
 private:

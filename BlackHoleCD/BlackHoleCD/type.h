@@ -30,6 +30,4 @@ typedef std::unordered_map<CID, NodeSet> ClusterSet;
 
 typedef std::unordered_map<Node, Pos> NodePosSet;
 typedef std::unordered_map<Node, CID> NodeCID;
-
-typedef std::unordered_map<Node, Pos> NodePosSet;
 typedef std::unordered_map<Node, NodeSet> NodeNearPoints;
