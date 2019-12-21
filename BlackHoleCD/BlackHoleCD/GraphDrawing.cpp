@@ -128,8 +128,10 @@ void GraphDrawing::calAttractiveForce(const Pos& u, const Pos& v, const double a
 {
 	fa = v - u;
 	double dst = fa.length();
-	/*if (abs(dst) < 1e-6)
-		return;*/
+	/*if (abs(dst) < 1e-6) {
+		cout << "oops" << endl;
+		return;
+	}*/
 	fa *= pow(dst, a - 2);
 }
 

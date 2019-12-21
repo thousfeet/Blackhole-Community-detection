@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-#define THETA 19
+#define THETA 1e-6 // 19
 
 OctTree::OctTree(const int dim, const NodePosSet& nodePoses)
 	: dim(dim), nMaxChild(1 << (dim + 1)), isLeaf(true), maxPos(dim),
