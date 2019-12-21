@@ -23,8 +23,6 @@ private:
 	NodeNearPoints nodeNearPoints;
 
 	CID clusterIdx;
-	NodeCID nodeCID;
-	NodeCIDSet nodeCIDSet;
 	ClusterSet clusterSet;
 };
 
