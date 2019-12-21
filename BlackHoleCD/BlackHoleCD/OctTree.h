@@ -1,12 +1,18 @@
 #pragma once
 
 #include "DataUtils.h"
-#include <unordered_map>
 
+typedef std::pair<Node, Pos> NodePos;
 
 class OctTree
 {
 public:
-	OctTree(const int dim, const std::unordered_map<Node, Pos>& nodes);
+	OctTree(const int dim, const NodePosSet& nodes);
+
+private:
+	union NodeData {
+		OctTree* tr;
+		NodePos* np;
+	};
 };
 

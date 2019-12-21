@@ -58,7 +58,7 @@ void GraphDrawing::exec(const Network& network, NodePosSet& nodePoses)
 
 		double minEnergy = calEnergy(network, a, r, nodePoses);
 		int bestGamma = -1;
-		int maxGamma = 1 << 6;
+		int maxGamma = 1 << 5;
 		for (int gamma = 1; gamma <= maxGamma; gamma <<= 1) {
 			NodePosSet newPoses = nodePoses;
 			double rGamma = 1.0 / double(gamma);

@@ -6,21 +6,21 @@
 
 
 /********************************************
-ÀàĞÍËµÃ÷
+ç±»å‹è¯´æ˜
 
-Node - unsigned int: ½ÚµãID
-NodeSet - unordered_set: Node¼¯ºÏ
+Node - unsigned int: èŠ‚ç‚¹ID
+NodeSet - unordered_set: Nodeé›†åˆ
 
-Edge - long long: ±ßÈ¨
-EdgeSet - unordered_set: Edge¼¯ºÏ
+Edge - long long: è¾¹æƒ
+EdgeSet - unordered_set: Edgeé›†åˆ
 
-CID - int: ClusterµÄID
+CID - int: Clusterçš„ID
 ClusterSet - unordered_map: <CID, NodeSet>
 
-Pos - vector: {<double>} ½ÚµãÔÚ¿Õ¼äÖĞµÄÎ»ÖÃ
+Pos - vector: {<double>} èŠ‚ç‚¹åœ¨ç©ºé—´ä¸­çš„ä½ç½®
 NodePosSet - unordered_map: <Node, Pos>
 
-NodeCID - unordered_map: <Node, CID> ½ÚµãËùÊôµÄcluster
+NodeCID - unordered_map: <Node, CID> èŠ‚ç‚¹æ‰€å±çš„cluster
 NodeNearPoints - unordered_map: <Node, NodeSet>
 ***********************************************/
 
