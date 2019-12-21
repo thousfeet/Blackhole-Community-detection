@@ -11,7 +11,8 @@ int main(int argc, char* argv[])
 
 	const string dataRoot = DataUtils::getDataRoot(argv[0]);
 	// const vector<string> datasets = { "Amazon\\amazon", "DBLP\\dblp", "Livejournal\\lj", "Orkut\\orkut", "Youtube\\youtube", "Football\\football" };
-	const vector<string> datasets = { "Football\\football"  };
+	// const vector<string> datasets = { "Football\\football"  };
+	const vector<string> datasets = { "Amazon\\amazon"  };
 	const int dim = 2;
 	for (const string& dataset : datasets) {
 		clock_t start = clock();

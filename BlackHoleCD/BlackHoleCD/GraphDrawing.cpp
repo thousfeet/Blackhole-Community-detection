@@ -20,7 +20,7 @@ void GraphDrawing::exec(const Network& network, NodePosSet& nodePoses)
 	for (const Node node : nodes)
 		nodePoses[node] = getRandomPos();
 	
-	const NodeVec& nodeVec = nodes;
+	const NodeVec nodeVec(nodes.begin(), nodes.end());
 
 	unordered_map<Node, Pos> fs;
 	Pos tf(dim);

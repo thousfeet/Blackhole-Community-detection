@@ -52,7 +52,7 @@ void DBScan::dbscan()
 	for (auto node : nodePoses) {
 		auto i = node.first; //node ID
 		if (nodeCID[i] != NOISE) {
-			clusterSet[nodeCID[i]].push_back(i);
+			clusterSet[nodeCID[i]].insert(i);
 		}
 	}
 
@@ -76,7 +76,7 @@ void DBScan::checkNearPoints()
 			if (i == j) continue;
 			// cout << (node1.second - node2.second).eucDis() << endl;
 			if ((node1.second - node2.second).eucDis() <= eps) {
-				nodeNearPoints[i].push_back(j);
+				nodeNearPoints[i].insert(j);
 			}
 		}
 	}
@@ -90,12 +90,11 @@ bool DBScan::isCoreObject(int idx)
 void DBScan::dfs(int now, int c)
 {
 	nodeCID[now] = c;
-	if (!isCoreObject(now)) return;
-
-	for (auto& next : nodeNearPoints[now]) {
-		if (nodeCID[next] != NOT_CLASSIFIED) continue; //not correct£¡
+	if (!isCoreObject(now))
+		return;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              	for (auto& next : nodeNearPoints[now]) {
+		if (nodeCID[next] != NOT_CLASSIFIED)
+			continue; //not correct£¡
 		dfs(next, c);
+
 	}
-
 }
-

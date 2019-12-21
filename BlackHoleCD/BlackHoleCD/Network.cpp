@@ -7,9 +7,9 @@ Network::Network()
 
 void Network::insertEdge(Node v1, Node v2)
 {
-	nodes_.insert(v1);
-	nodes_.insert(v2);
-	edges_.insert(EDGE(v1, v2));
+	nodes.insert(v1);
+	nodes.insert(v2);
+	edges.insert(EDGE(v1, v2));
 	maxNodeId = max(maxNodeId, max(v1, v2));
 	allDegree += 2;
 	degMat[v1] += 1;
@@ -56,10 +56,4 @@ double Network::getFactor(Node u) const
 int Network::getNodeDegree(Node u) const
 {
 	return degMat.find(u)->second;
-}
-
-void Network::readFinish()
-{
-	nodes.assign(nodes_.begin(), nodes_.end());
-	edges.assign(edges_.begin(), edges_.end());
 }
