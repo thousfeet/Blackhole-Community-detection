@@ -39,6 +39,7 @@ string DataUtils::readNetwork(const string& dataRoot, const string& dataset, Net
 		
 		network.insertEdge(v1, v2);
 	}
+	network.readFinish();
 	fin.close();
 	clock_t end = clock();
 	cout << "[readNetwork] [" + dataset + "] [" << double(end - start) / CLOCKS_PER_SEC << "s] " << network.getNodeNum() << " nodes, " << network.getEdgeNum() << " edges" << endl;

@@ -5,8 +5,6 @@ using namespace std;
 
 #define NOT_CLASSIFIED -1
 #define NOISE -2
-#define max(a, b) (a < b ? b : a)
-#define min(a, b) (a < b ? a : b)
 
 
 DBScan::DBScan(NodePosSet& nodePoses, int nodeNum, double eps, int minPts, NodeCID& nodeCID)
@@ -54,7 +52,7 @@ void DBScan::dbscan()
 	for (auto node : nodePoses) {
 		auto i = node.first; //node ID
 		if (nodeCID[i] != NOISE) {
-			clusterSet[nodeCID[i]].insert(i);
+			clusterSet[nodeCID[i]].push_back(i);
 		}
 	}
 
@@ -78,7 +76,7 @@ void DBScan::checkNearPoints()
 			if (i == j) continue;
 			// cout << (node1.second - node2.second).eucDis() << endl;
 			if ((node1.second - node2.second).eucDis() <= eps) {
-				nodeNearPoints[i].insert(j);
+				nodeNearPoints[i].push_back(j);
 			}
 		}
 	}

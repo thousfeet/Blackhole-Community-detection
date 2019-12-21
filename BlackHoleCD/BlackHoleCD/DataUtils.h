@@ -2,7 +2,6 @@
 
 #include "type.h"
 
-
 class DataUtils {
 public:
 	static std::string getDataRoot(const std::string& exePath);

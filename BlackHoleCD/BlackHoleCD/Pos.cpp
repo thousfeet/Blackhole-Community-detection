@@ -42,6 +42,22 @@ Pos Pos::operator*(const double f) const
 	return r;
 }
 
+Pos Pos::operator/(const double f) const
+{
+	Pos r(dim);
+	for (int i = 0; i < dim; ++i)
+		r.pos[i] = pos[i] / f;
+	return r;
+}
+
+Pos Pos::operator-() const
+{
+	Pos r(dim);
+	for (int i = 0; i < dim; ++i)
+		r.pos[i] = -pos[i];
+	return r;
+}
+
 Pos& Pos::operator=(const Pos& t)
 {
 	dim = t.dim;
@@ -56,6 +72,13 @@ Pos& Pos::operator+=(const Pos& t)
 	return *this;
 }
 
+Pos& Pos::operator-=(const Pos& t)
+{
+	for (int i = 0; i < dim; ++i)
+		pos[i] -= t.pos[i];
+	return *this;
+}
+
 Pos& Pos::operator*=(const double f)
 {
 	for (double& i : pos)
@@ -63,7 +86,19 @@ Pos& Pos::operator*=(const double f)
 	return *this;
 }
 
+Pos& Pos::operator/=(const double f)
+{
+	for (double& i : pos)
+		i /= f;
+	return *this;
+}
+
 double& Pos::operator[](const unsigned int i)
+{
+	return pos[i];
+}
+
+const double& Pos::operator[](const unsigned int i) const
 {
 	return pos[i];
 }
