@@ -27,7 +27,7 @@ DBScan::DBScan(NodePosSet& nodePoses, int nodeNum, double eps, int minPts, NodeC
 	}
 	for (int i = 0; i < dim; ++i)
 		this->eps *= maxPos[i] - minPos[i];
-	cout << "eps = " << this->eps << endl;
+	//cout << "eps = " << this->eps << endl;
 }
 
 void DBScan::dbscan()
@@ -41,7 +41,7 @@ void DBScan::dbscan()
 
 		if (isCoreObject(i)) {
 			clusterIdx++;
-			std::cout << "find new cluster ID: " << clusterIdx << std::endl;
+			//std::cout << "find new cluster ID: " << clusterIdx << std::endl;
 			dfs(i, clusterIdx);
 		}
 		else {
@@ -52,7 +52,7 @@ void DBScan::dbscan()
 	for (auto node : nodePoses) {
 		auto i = node.first; //node ID
 		if (nodeCID[i] != NOISE) {
-			clusterSet[nodeCID[i]].insert(i);
+			clusterSet[nodeCID[i]].push_back(i);
 		}
 	}
 
@@ -74,9 +74,8 @@ void DBScan::checkNearPoints()
 		for (auto& node2 : nodePoses) {
 			auto j = node2.first; //node ID
 			if (i == j) continue;
-			// cout << (node1.second - node2.second).eucDis() << endl;
 			if ((node1.second - node2.second).eucDis() <= eps) {
-				nodeNearPoints[i].insert(j);
+				nodeNearPoints[i].push_back(j);
 			}
 		}
 	}
@@ -89,13 +88,14 @@ bool DBScan::isCoreObject(int idx)
 
 void DBScan::dfs(int now, int c)
 {
-	nodeCID[now] = c;
-	if (!isCoreObject(now))
-		return;
-	for (auto& next : nodeNearPoints[now]) {
-		if(nodeCID[next] == NOISE) nodeCID[next] = c;
-		if (nodeCID[next] != NOT_CLASSIFIED) continue; 
-		dfs(next, c);
+	//if (!isCoreObject(now)) return;
 
+	for (auto& next : nodeNearPoints[now]) {
+		if (nodeCID[next] == NOISE) nodeCID[next] = c;
+		if (nodeCID[next] != NOT_CLASSIFIED) continue; 
+		nodeCID[now] = c;
+		if (isCoreObject(now)) dfs(next, c);
 	}
+
 }
+
