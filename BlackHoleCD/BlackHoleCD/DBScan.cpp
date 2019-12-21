@@ -91,7 +91,8 @@ void DBScan::dfs(int now, int c)
 {
 	nodeCID[now] = c;
 	if (!isCoreObject(now))
-		return;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              	for (auto& next : nodeNearPoints[now]) {
+		return;
+	for (auto& next : nodeNearPoints[now]) {
 		if (nodeCID[next] != NOT_CLASSIFIED)
 			continue; //not correct£¡
 		dfs(next, c);
