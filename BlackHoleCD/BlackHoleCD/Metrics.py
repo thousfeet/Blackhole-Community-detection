@@ -1,4 +1,5 @@
 from collections import defaultdict
+import numpy as np
 
 import networkx as nx
 import matplotlib.pyplot as plt
@@ -40,45 +41,52 @@ def M2(ms):
 def M3(ms, ns):
     return 2*ms / ns
 
-def M4():
-    pass
-
+def M4(node_di, node_edge, ns):
+    mid = np.median(np.array(list(node_edge.values())))
+    cnt = 0
+    for node in node_di:
+        if node_di[node] > mid: cnt+=1
+    return cnt/ns
 def M5(cs, ns):
     return cs / ns
 
 def M6(cs, n, ns):
-    return cs / ns(n - ns)
+    return cs / ns*(n - ns)
 
 def M7(cs, ms):
     return cs / (2 * ms + cs)
 
 def M8(cs, m, ms):
-    return M7() + cs / (2 * (m - ms) + cs)
+    return M7(cs, ms) + cs / (2 * (m - ms) + cs)
 
-def M9():
-    pass
+def M9(node_di, node_edge):
+    cnt = 0
+    for node in node_di:
+        if node_di[node] < node_edge[node]/2: cnt+=1
+    return cnt/ns
 
 #############################################
 
 m = 0
+node_node = defaultdict(set)
 
 with open(dataFilePath) as dataFile:
-    node_edge = defaultdict(set)
     for line in dataFile:
         if line.startswith('#'):
             continue
         m += 1
         u, v = line.split()
-        node_edge[u].add(v)
-        node_edge[v].add(u)
-    # for ne in node_edge:
-        # print(ne, node_edge[ne])
+        node_node[u].add(v)
+        node_node[v].add(u)
 
-n = len(node_edge)
+# for ne in node_edge:
+#     print(ne, node_edge[ne])
 
+n = len(node_node)
+
+node_CID = dict()
+CID_node = defaultdict(set)
 with open(clusterFilePath) as clusterFile:
-    node_CID = dict()
-    CID_node = defaultdict(set)
     for line in clusterFile:
         if line.startswith('#'):
             continue
@@ -86,22 +94,32 @@ with open(clusterFilePath) as clusterFile:
         node_CID[node] = cid
         if int(cid) >= 0:
             CID_node[cid].add(node)
-    for cluster in CID_node:
-        print(cluster, CID_node[cluster])
+# for cluster in CID_node:
+#     print(cluster, CID_node[cluster])
 
-node_di = dict()  # 指向cluster内边数
-edge_cnt = 0  # 所有节点的度数和
+# node_node dict{node, {相邻node}}
+# node_CID dict{node, CID}
+# CID_node dict{CID, {nodes}}
+
+node_di = dict()  # 各节点指向cluster内的边数
+node_edge = dict()
+print("cluster", len(CID_node))
 for cluster in CID_node:
     node_di.clear()
     nodes = CID_node[cluster]
     ns = len(nodes)
     for u in nodes:
-        vs = node_edge[u]
-        edge_cnt += len(vs)
+        vs = node_node[u]  # u节点的相邻节点set
+        node_edge[u] = len(vs)
+        # print(vs)
         for v in vs:
+            # print(v)
             if v in nodes:
-                node_di[v] += 1
-    ms = sum(node_di)/2
-    ns = len(CID_node)
-    cs = edge_cnt-sum(node_di)
-    print(M1(ms, ns),M2(ms),M3(ms, ns),M4(),M5(cs, ns),M6(cs, n, ns),M7(cs, ms),M8(cs, m, ms),M9())
+                if u not in node_di: node_di[u] = 1
+                else: node_di[u] += 1
+    edge_cnt = sum(map(int, node_edge)) # 所有节点的度数和
+    ms = sum(map(int, node_di))/2
+    cs = edge_cnt-sum(map(int,node_di))
+    print("node number in this cluster", ns)
+    print(M1(ms, ns), M2(ms), M3(ms, ns), M4(node_di, node_edge, ns), M5(cs, ns),
+          M6(cs, n, ns), M7(cs, ms), M8(cs, m, ms), M9(node_di, node_edge))
