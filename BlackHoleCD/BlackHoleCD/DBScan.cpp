@@ -90,12 +90,22 @@ void DBScan::dfs(int now, int c)
 {
 	nodeCID[now] = c;
 	if (!isCoreObject(now)) return;
+	
+	stack<pair<NodeSet::const_iterator, NodeSet::const_iterator>> S;
+	S.push({ nodeNearPoints[now].begin(), nodeNearPoints[now].end() });
 
-	for (auto& next : nodeNearPoints[now]) {
-		if (nodeCID[next] == NOISE) nodeCID[next] = c;
-		if (nodeCID[next] != NOT_CLASSIFIED) continue; 
-		dfs(next, c);
+	while (!S.empty()) {
+		auto& t = S.top();
+		Node next = *t.first;
+		if (++t.first == t.second)
+			S.pop();
+		if (nodeCID[next] == NOISE)
+			nodeCID[next] = c;
+		if (nodeCID[next] != NOT_CLASSIFIED)
+			continue;
+		nodeCID[next] = c;
+		if (isCoreObject(next))
+			S.push({ nodeNearPoints[next].begin(), nodeNearPoints[next].end() });
 	}
-
 }
 
