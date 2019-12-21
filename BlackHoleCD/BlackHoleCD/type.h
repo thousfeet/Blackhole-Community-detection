@@ -6,21 +6,21 @@
 
 
 /********************************************
-类型说明
+锟斤拷锟斤拷说锟斤拷
 
-Node - unsigned int: 节点ID
-NodeSet - unordered_set: Node集合
+Node - unsigned int: 锟节碉拷ID
+NodeSet - unordered_set: Node锟斤拷锟斤拷
 
-Edge - long long: 边权
-EdgeSet - unordered_set: Edge集合
+Edge - long long: 锟斤拷权
+EdgeSet - unordered_set: Edge锟斤拷锟斤拷
 
-CID - int: Cluster的ID
+CID - int: Cluster锟斤拷ID
 ClusterSet - unordered_map: <CID, NodeSet>
 
-Pos - vector: {<double>} 节点在空间中的位置
+Pos - vector: {<double>} 锟节碉拷锟节空硷拷锟叫碉拷位锟斤拷
 NodePosSet - unordered_map: <Node, Pos>
 
-NodeCID - unordered_map: <Node, CID> 节点所属的cluster
+NodeCID - unordered_map: <Node, CID> 锟节碉拷锟斤拷锟斤拷锟斤拷cluster
 NodeNearPoints - unordered_map: <Node, NodeSet>
 ***********************************************/
 
