@@ -42,7 +42,8 @@ void DBScan::dbscan()
 		if (isCoreObject(i)) {
 			clusterIdx++;
 			//std::cout << "find new cluster ID: " << clusterIdx << std::endl;
-			dfs(i, clusterIdx);
+			//dfs(i, clusterIdx);
+			bfs(i, clusterIdx);
 		}
 		else {
 			nodeCID[i] = NOISE;
@@ -97,5 +98,22 @@ void DBScan::dfs(int now, int c)
 		dfs(next, c);
 	}
 
+}
+
+void DBScan::bfs(int now, int c)
+{
+	nodeCID[now] = c;
+	queue<int> que;
+	que.push(now);
+	while (!que.empty()) {
+		int t = que.front();
+		que.pop();
+		for (auto& next : nodeNearPoints[t]) {
+			if (nodeCID[next] == NOISE) nodeCID[next] = c;
+			if (nodeCID[next] != NOT_CLASSIFIED) continue;
+			nodeCID[next] = c;
+			if (isCoreObject(next)) que.push(next);
+		}
+	}
 }
 

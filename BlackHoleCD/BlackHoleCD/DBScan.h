@@ -2,6 +2,7 @@
 
 #include "GraphDrawing.h"
 #include <iostream>
+#include <queue>
 
 class DBScan
 {
@@ -14,6 +15,7 @@ private:
 	void checkNearPoints();
 	bool isCoreObject(int idx);
 	void dfs(int now, int c);
+	void bfs(int now, int c);
 	int nodeNum;
 	double eps;
 	int minPts;
