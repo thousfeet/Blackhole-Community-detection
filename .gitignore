@@ -8,6 +8,7 @@ x64/
 *.nodeCIDs.txt
 *.nodePoses.txt
 test/
+Livejournal/
 BlackHoleCD.sln
 BlackHoleCD.vcxproj
 BlackHoleCD.vcxproj.filters
@@ -16,3 +17,4 @@ BlackHoleCD.vcxproj.user
 *.out
 *.dat
 !football.ungraph.txt
+*.zip
