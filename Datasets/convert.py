@@ -1,5 +1,5 @@
 # datasets = ["Amazon\\amazon", "DBLP\\dblp", "Livejournal\\lj", "Orkut\\orkut", "Youtube\\youtube", "Football\\football"]
-datasets = ["DBLP\\dblp"]
+datasets = ["Amazon\\amazon", "DBLP\\dblp","Youtube\\youtube"]
 d = {}
 c = 1
 r = []
