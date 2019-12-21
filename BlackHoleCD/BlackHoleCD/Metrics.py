@@ -5,15 +5,18 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import sys
 
-# assert len(sys.argv) == 4
-#
 # dataFilePath = sys.argv[1]
-# clusterFilePath = sys.argv[3]
+# clusterFilePath = sys.argv[2]
 
-########### debug
+########## debug1
+# rootPath = "../../Datasets/Football/"
+# dataFilePath = rootPath + "football.ungraph.txt"
+# clusterFilePath = rootPath + "football.nodeCIDs.txt"
+
+########## debug2
 rootPath = "D:/Blackhole-Community-detection/Datasets/Football/"
 dataFilePath = rootPath + "football.ungraph.txt"
-clusterFilePath = rootPath + "football.nodeCIDs.txt"
+clusterFilePath = rootPath + "outputfile.dat"
 
 ########
 # internal density (M1), ms / (ns*(ns-1)/2)
@@ -134,7 +137,8 @@ for cluster in CID_node:
     #     tmp += len(node_node[node])-node_di[node]
     # print("tmp", tmp)
 
+    print("CID", cluster)
     print("edge_cnt", edge_cnt, "ns", ns, "ms", ms, "cs", cs)
     print(M1(ms, ns), M2(ms), M3(ms, ns), M4(node_di, node_edge, ns), M5(cs, ns),
           M6(cs, n, ns), M7(cs, ms), M8(cs, m, ms), M9(node_di, node_edge))
-    break
+    print("---------------------------------------------------------------------")

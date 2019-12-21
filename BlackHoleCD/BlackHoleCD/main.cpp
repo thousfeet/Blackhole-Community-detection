@@ -25,6 +25,7 @@ int main(int argc, char* argv[])
 		clock_t end = clock();
 		cout << "[main] [" << dataset << "] [" << double(end - start) / CLOCKS_PER_SEC << "s]" << endl;
 		DataUtils::draw(dataRoot, dataset, dataFilename, clusterFilename, nodePoses);
+		DataUtils::metrics(dataFilename, clusterFilename);
 	}
 	return 0;
 }

@@ -92,3 +92,8 @@ void DataUtils::draw(const std::string& dataRoot, const string& dataset, const s
 	string filename = DataUtils::writeNodePoses(dataRoot, dataset, nodePoses);
 	system(("python draw.py " + dataFilename + " " + filename + " " + clusterFilename).c_str());
 }
+
+void DataUtils::metrics(const std::string& dataFilename, const std::string& clusterFilename)
+{
+	system(("python Metrics.py " + dataFilename + " " + clusterFilename).c_str());
+}
