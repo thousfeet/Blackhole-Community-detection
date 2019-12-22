@@ -16,11 +16,12 @@ public:
 };
 
 
-DBScan::DBScan(NodePosSet& nodePoses, int nodeNum, double removePercentage, int minPts, NodeCID& nodeCID)
-	: nodePoses(nodePoses), nodeCID(nodeCID), minPts(minPts), nodeNum(nodeNum)
+DBScan::DBScan(NodePosSet& nodePoses, int nodeNum, int minPts, NodeCID& nodeCID)
+	: nodePoses(nodePoses), nodeCID(nodeCID), minPts(nodeNum), nodeNum(nodeNum)
 {
 	this->nodeCID.clear();
-	this->eps = getEps(removePercentage);
+	this->eps = getEps(0) * 5;
+	// this->eps = getEps(0);
 	this->clusterIdx = -1;
 
 	/*auto& p = nodePoses.begin()->second;

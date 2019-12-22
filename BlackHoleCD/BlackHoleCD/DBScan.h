@@ -7,7 +7,7 @@
 class DBScan
 {
 public:
-	DBScan(NodePosSet& nodePoses, int nodeNum, double removePercentage, int minPts, NodeCID& nodeCID);
+	DBScan(NodePosSet& nodePoses, int nodeNum, int minPts, NodeCID& nodeCID);
 	void dbscan();
 
 private:

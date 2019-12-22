@@ -91,10 +91,14 @@ string DataUtils::writeNodeCIDs(const std::string& dataRoot, const std::string& 
 void DataUtils::draw(const std::string& dataRoot, const string& dataset, const string& dataFilename, const string& clusterFilename, NodePosSet& nodePoses)
 {
 	string filename = DataUtils::writeNodePoses(dataRoot, dataset, nodePoses);
-	system(("python draw.py " + dataFilename + " " + filename + " " + clusterFilename).c_str());
+	string cmd = "python draw.py " + dataFilename + " " + filename + " " + clusterFilename;
+	cout << ">>>>>>>>>>>>" << cmd << endl;
+	// system(cmd.c_str());
 }
 
 void DataUtils::metrics(const std::string& dataFilename, const std::string& clusterFilename)
 {
-	system(("python Metrics.py " + dataFilename + " " + clusterFilename).c_str());
+	string cmd = "python Metrics.py " + dataFilename + " " + clusterFilename;
+	cout << ">>>>>>>>>>>>" << cmd << endl;
+	system(cmd.c_str());
 }

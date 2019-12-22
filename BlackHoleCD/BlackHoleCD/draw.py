@@ -22,12 +22,14 @@ with open(sys.argv[2]) as fin:
 colors = {}
 with open(sys.argv[3]) as fin:
     for line in fin:
-        items = line.strip().split()
+        items = line.strip().split()[:2]
         assert len(items) == 2
         colors[int(items[0])] = int(items[1])
 print(len(list(filter(lambda x: x == -2, colors.values()))))
-print(set(colors.values()))
-colors = [(colors[x] + 2) for x in G.nodes()]
+# print(set(colors.values()))
+n = len(set(colors.values()))
+print(n)
+colors = [(colors[x] + 2) / n for x in G.nodes()]
 # colors = list(colors.items())
 # colors.sort()
 # colors = [x[1] + 1 / 10 for x in colors]
