@@ -7,7 +7,7 @@
 class DBScan
 {
 public:
-	DBScan(NodePosSet& nodePoses, int nodeNum, double eps, int minPts, NodeCID& nodeCID);
+	DBScan(NodePosSet& nodePoses, int nodeNum, double removePercentage, int minPts, NodeCID& nodeCID);
 	void dbscan();
 
 private:
@@ -16,6 +16,7 @@ private:
 	bool isCoreObject(int idx);
 	void dfs(int now, int c);
 	void bfs(int now, int c);
+	double getEps(double removePercentage);
 	int nodeNum;
 	double eps;
 	int minPts;

@@ -16,7 +16,8 @@ string DataUtils::readNetwork(const string& dataRoot, const string& dataset, Net
 {
 	clock_t start = clock();
 	network.clear();
-	string filename = dataRoot + dataset + ".ungraph.txt";
+	// string filename = dataRoot + dataset + ".ungraph.txt";
+	string filename = dataRoot + dataset + ".ungraph_sample.txt";
 	ifstream fin(filename);
 	if (!fin.is_open()) {
 		cout << "ERROR: Unable to read \"" + filename + "\"!" << endl;

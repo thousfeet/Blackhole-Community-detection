@@ -2,7 +2,8 @@
 #include <iostream>
 using namespace std;
 
-#define THETA 1e-6 // 19
+// #define THETA 1e-6
+#define THETA 20
 
 OctTree::OctTree(const int dim, const NodePosSet& nodePoses)
 	: dim(dim), nMaxChild(1 << (dim + 1)), isLeaf(true), maxPos(dim),
@@ -71,7 +72,7 @@ double OctTree::width() const
 	double s = 0;
 	for (int i = 0; i < dim; ++i)
 		s = max(s, maxPos[i] - minPos[i]);
-	return s * 1.41;
+	return s * 1.414;
 }
 
 bool OctTree::checkSplit(const Network& network, const NodeVec& nodes)

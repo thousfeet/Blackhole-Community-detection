@@ -11,7 +11,7 @@ int main(int argc, char* argv[])
 
 	const string dataRoot = DataUtils::getDataRoot(argv[0]);
 	// const vector<string> datasets = { "Amazon\\amazon", "DBLP\\dblp", "Livejournal\\lj", "Orkut\\orkut", "Youtube\\youtube", "Football\\football" };
-	const vector<string> datasets = { "Football\\football"  };
+	const vector<string> datasets = { "Amazon\\amazon"  };
 	// const vector<string> datasets = { "DBLP\\dblp"  };
 	const int dim = 2;
 	for (const string& dataset : datasets) {
@@ -24,8 +24,8 @@ int main(int argc, char* argv[])
 		string clusterFilename = DataUtils::writeNodeCIDs(dataRoot, dataset, nodeCID);
 		clock_t end = clock();
 		cout << "[main] [" << dataset << "] [" << double(end - start) / CLOCKS_PER_SEC << "s]" << endl;
+		// DataUtils::metrics(dataFilename, clusterFilename);
 		DataUtils::draw(dataRoot, dataset, dataFilename, clusterFilename, nodePoses);
-		DataUtils::metrics(dataFilename, clusterFilename);
 	}
 	return 0;
 }

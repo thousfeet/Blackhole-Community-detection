@@ -5,8 +5,8 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import sys
 
-# dataFilePath = sys.argv[1]
-# clusterFilePath = sys.argv[2]
+dataFilePath = sys.argv[1]
+clusterFilePath = sys.argv[2]
 
 ########## debug1
 # rootPath = "../../Datasets/Football/"
@@ -14,9 +14,9 @@ import sys
 # clusterFilePath = rootPath + "football.nodeCIDs.txt"
 
 ########## debug2
-rootPath = "D:/Blackhole-Community-detection/Datasets/Football/"
-dataFilePath = rootPath + "football.ungraph.txt"
-clusterFilePath = rootPath + "outputfile.dat"
+# rootPath = "../../Datasets/Football/"
+# dataFilePath = rootPath + "football.ungraph.txt"
+# clusterFilePath = rootPath + "outputfile.dat"
 
 ########
 # internal density (M1), ms / (ns*(ns-1)/2)

@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <ctime>
 
- #define USE_OCT_TREE
+#define USE_OCT_TREE
 
 using namespace std;
 
@@ -19,7 +19,7 @@ void GraphDrawing::exec(const Network& network, NodePosSet& nodePoses)
 	const EdgeSet& edges = network.getEdgeSet();
 	for (const Node node : nodes)
 		nodePoses[node] = getRandomPos();
-	
+
 	const NodeVec nodeVec(nodes.begin(), nodes.end());
 
 	unordered_map<Node, Pos> fs;
@@ -94,9 +94,9 @@ void GraphDrawing::exec(const Network& network, NodePosSet& nodePoses)
 			}
 		};
 
-		for (int gamma = 8; gamma >= 1 && (bestGamma == -1 || (bestGamma >> 1) == gamma); gamma >>= 1)
+		for (int gamma = 32; gamma >= 1 && (bestGamma == -1 || (bestGamma >> 1) == gamma); gamma >>= 1)
 			testGamma(gamma);
-		for (int gamma = 16; gamma <= 64 && bestGamma == (gamma >> 1); gamma <<= 1)
+		for (int gamma = 64; gamma <= 128 && bestGamma == (gamma >> 1); gamma <<= 1)
 			testGamma(gamma);
 
 		if (bestGamma != -1) {
