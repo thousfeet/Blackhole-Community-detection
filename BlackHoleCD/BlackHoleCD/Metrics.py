@@ -115,6 +115,8 @@ with open(clusterFilePath) as clusterFile:
 
 node_di = dict()
 # print("cluster", len(CID_node))
+
+print("---------------------------------------------------------------------")
 for cluster in CID_node:
     edge_cnt = 0  # 社区内所有节点的度数和
     node_di.clear()
@@ -141,4 +143,3 @@ for cluster in CID_node:
     print("edge_cnt", edge_cnt, "ns", ns, "ms", ms, "cs", cs)
     print(M1(ms, ns), M2(ms), M3(ms, ns), M4(node_di, node_edge, ns), M5(cs, ns),
           M6(cs, n, ns), M7(cs, ms), M8(cs, m, ms), M9(node_di, node_edge))
-    print("---------------------------------------------------------------------")
