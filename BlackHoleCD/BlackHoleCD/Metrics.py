@@ -8,37 +8,36 @@ import sys
 dataFilePath = sys.argv[1]
 clusterFilePath = sys.argv[2]
 
+
+########## debug football authors
+rootPath = "D:/Blackhole-Community-detection/Datasets/Football/"
+dataFilePath = rootPath + "football.ungraph.txt"
+clusterFilePath = rootPath + "outputfile.dat"
+
 ########## debug football ours
 # rootPath = "../../Datasets/Football/"
 # dataFilePath = rootPath + "football.ungraph.txt"
 # clusterFilePath = rootPath + "football.nodeCIDs.txt"
 
-########## debug2
-# rootPath = "../../Datasets/Football/"
-# dataFilePath = rootPath + "football.ungraph.txt"
-# clusterFilePath = rootPath + "outputfile.dat"
-
-########## debug football authors
-# rootPath = "D:/Blackhole-Community-detection/Datasets/Football/"
-# dataFilePath = rootPath + "football.ungraph.txt"
-# clusterFilePath = rootPath + "outputfile.dat"
-
 ########## debug Amazon authors
 # rootPath = "D:/Blackhole-Community-detection/Datasets/Amazon/"
 # dataFilePath = rootPath + "amazon.ungraph_sample_convert.txt"
-# clusterFilePath = rootPath + "amazon.ungraph_sample_convert.txt_dimsnsion_2_alpha_0.01_minPts_5_pruningFactor_0" \
-#                              ".1_position.out_MinPts_5_RemovePercent_0.1_EPS_0.724053.dat "
+# clusterFilePath = rootPath + "amazon.dat"
 
-########## debug Amazon ground_truth
+########## debug Amazon ours
 # rootPath = "D:/Blackhole-Community-detection/Datasets/Amazon/"
 # dataFilePath = rootPath + "amazon.ungraph_sample.txt"
-# clusterFilePath = rootPath + "amazon.gt.txt"
+# clusterFilePath = rootPath + "amazon.nodeCIDs.txt"
 
 ########## debug DBLP authors
 # rootPath = "D:/Blackhole-Community-detection/Datasets/DBLP/"
 # dataFilePath = rootPath + "dblp.ungraph_sample_convert.txt"
 # clusterFilePath = rootPath + "dblp.ungraph_sample_convert.txt_dimsnsion_2_alpha_0.01_minPts_5_pruningFactor_0.1_position.out_MinPts_5_RemovePercent_0.1_EPS_1.30167.dat"
 
+########## debug youtube authors
+rootPath = "D:/Blackhole-Community-detection/Datasets/Youtube/"
+dataFilePath = rootPath + "youtube.ungraph.txt"
+clusterFilePath = rootPath + "youtube.dat"
 
 
 ########
